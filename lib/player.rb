@@ -1,3 +1,5 @@
+
+require 'pry'
 class Player
   attr_accessor :hand, :score
   attr_reader :name, :age
@@ -18,7 +20,7 @@ class Player
 
   # Removes a card from the deck and adds it to hand
 
-  def ask_and_take(number, player)
+  def ask_and_take(number, player = Game.current_game.other_player)
     take_card=nil
     take_card = player.hand.find do |card|
       card.number == number
@@ -26,7 +28,8 @@ class Player
     if take_card.class == Card
       hand << player.hand.delete(take_card) 
     else
-      "Go fish"
+      puts "Go fish"
+      draw
     end
   end
 

@@ -12,7 +12,9 @@
 
 class Game
   attr_accessor :current_player, :over, :winner, :player_order, :other_player
- 
+  
+  @@current_game = nil
+
   def build_player_order 
     #based on age, youngest to oldest
     #looks at all players of game, sorts by age. Should return an array. 
@@ -38,11 +40,16 @@ class Game
     @player_order = build_player_order
     deal_cards
     @current_player = player_order.first
+    @other_player = player_order.last
+    @@current_game = self
   end
 
+  def self.current_game
+    @@current_game
+  end
 
   def check_score
-    current_player.score >= 10
+    current_player.score >=1
   end
 
   def check_deck
@@ -54,8 +61,8 @@ class Game
     if check_deck
       over = true
     elsif check_score
-      winner = current_player
-      puts "#{@winner} wins with a score of #{@winner.score}"
+      @winner = current_player
+      puts "#{@winner.name} wins with a score of #{@winner.score}"
       over = true
     end
   end
