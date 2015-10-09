@@ -23,7 +23,7 @@ class Player
     take_card = player.hand.find do |card|
       card.number == number
     end
-    if take_card.class = Card
+    if take_card.class == Card
       hand << player.hand.delete(take_card) 
     else
       "Go fish"
@@ -38,11 +38,11 @@ class Player
   # Outputs a number on matching card
   def find_matching
     numbers_array = numbers_in_hand
-    match_num = "none"
+    #match_num = "none"
     match_num = numbers_array.find do |card|
       numbers_array.count(card) > 1
     end
-    play_pairs(match_num) unless match_num == 0
+    play_pairs(match_num) if match_num
   end
 
   # Takes first two cards with matching numbers, removes
@@ -50,7 +50,7 @@ class Player
   def play_pairs(match_num)
     2.times do
       card = hand.find {|card| card.number == match_num}
-      Card.played << hand.delete(card)
+      Card.played << hand.delete(card) if card
     end
     @score += 1
   end

@@ -11,7 +11,7 @@
 #should a game be able to reset itself? If so, what is it resetting? 
 
 class Game
-  attr_accessor :current_player, :over, :winner, :player_order
+  attr_accessor :current_player, :over, :winner, :player_order, :other_player
  
   def build_player_order 
     #based on age, youngest to oldest
@@ -37,7 +37,7 @@ class Game
 
     @player_order = build_player_order
     deal_cards
-    current_player = player_order.first
+    @current_player = player_order.first
   end
 
 
@@ -60,17 +60,27 @@ class Game
     end
   end
 
-  def next_player
-    #iterate through the array of players. 
-    # if we reach the end, reset at 0 and start
-    turn = player_order.index(current_player)
-    if turn + 1 >= player_order.length
-      turn = 0
-    else
-      turn += 1
+  # def next_player
+  #   #iterate through the array of players. 
+  #   # if we reach the end, reset at 0 and start
+  #   turn = player_order.index(current_player)
+  #   if turn + 1 >= player_order.length
+  #     turn = 0
+  #   else
+  #     turn += 1
+  #   end
+  #   current_player = player_order[turn]
+  # end 
+
+  def switch_player
+    if @current_player == player_order[0]
+      @current_player = player_order[1]
+      @other_player = player_order[0]
+    elsif @current_player == player_order[1]
+      @current_player = player_order[0]
+      @other_player = player_order[1]
     end
-    current_player = player_order[turn]
-  end 
+  end
 
   # def reset_game
     

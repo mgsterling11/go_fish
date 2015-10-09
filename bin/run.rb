@@ -13,7 +13,7 @@ def reload!
   load 'lib/player.rb'
   # load 'lib/computer.rb'
   load 'lib/game.rb'
-  load 'seed.rb'
+  #load 'seed.rb'
 end
 
 
