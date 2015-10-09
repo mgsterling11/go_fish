@@ -2,10 +2,10 @@ class Player
   attr_accessor :hand, :score
   attr_reader :name, :age
 
-  @@players = []
+  @@all = []
 
-  def self.players
-    @@players
+  def self.all
+    @@all
   end
 
   def initialize(name, age)
@@ -13,14 +13,10 @@ class Player
     @name = name
     @age = age
     @score = 0
-    @@players << self
+    @@all << self
   end
 
   # Removes a card from the deck and adds it to hand
-  def draw
-    rand_card = Card.unplayed_deck.length
-    @hand << Card.unplayed_deck.delete_at(rand_car)
-  end
 
   def ask_and_take(number, player)
     take_card=nil
@@ -59,12 +55,16 @@ class Player
     score += 1
   end
 
+  def draw
+    rand_card = Card.unplayed_deck.length
+    @hand << Card.unplayed_deck.delete_at(rand_car)
+  end
+
   def check_for_empty
     5.times {draw} if hand.empty?
   end
 
   # ACCESS NEEDED
   # attr_accessor :Card.unplayed_deck, :Card.unplayed
-  # Renamed class Player
 
 end

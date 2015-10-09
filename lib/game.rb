@@ -22,7 +22,7 @@ class Game
  
   def deal_cards
     5.times do 
-      Player.all.each |player|
+      Player.all.each do |player|
         player.draw
         #The player should draw a card from the deck and add it to their hand
         #deals out 5 cards to each player 
@@ -30,10 +30,11 @@ class Game
     end
   end
 
-  def new_game
+  def initialize
     #should this be in the initialization of Game? So, CLI would call Game.new
     #new game kicks off game
     #commences gameplay (calls build_player_order)
+
     player_order = build_player_order
     deal_cards
     current_player = player_order.first
@@ -69,14 +70,13 @@ class Game
       turn += 1
     end
     current_player = player_order[turn]
-    
   end 
 
-  def reset_game
+  # def reset_game
     
-  end
+  # end
+end
 
-end 
 
 #require 'pry'
 
