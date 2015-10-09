@@ -1,0 +1,9 @@
+__ - implement filter for entering in a number
+__ - reformat menu system so you don't have to type ask every time
+__ - refactor run ruby file into controller
+__ - validation for other commands on your turn
+__ - improve aesthetics
+__ - create loop for players turn so that they can ask for help and get list of played cards without ending their turn.
+__ - make it so an invalid input doesnt skip your turn
+__ - make sure you can take onther players face cards
+__ - be bale to play two sets of pairs at the begining of the game
