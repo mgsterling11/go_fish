@@ -1,4 +1,4 @@
-class Person
+class Player
   attr_accessor :hand, :score
   attr_reader :name, :age
 
@@ -65,6 +65,6 @@ class Person
 
   # ACCESS NEEDED
   # attr_accessor :Card.unplayed_deck, :Card.unplayed
-  # 
+  # Renamed class Player
 
 end
