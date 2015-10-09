@@ -38,9 +38,9 @@ class Player
   # Outputs a number on matching card
   def find_matching
     numbers_array = numbers_in_hand
-    match_num = 0
+    match_num = "none"
     match_num = numbers_array.find do |card|
-      hand.count(card.number) > 1
+      numbers_array.count(card) > 1
     end
     play_pairs(match_num) unless match_num == 0
   end
@@ -52,12 +52,12 @@ class Player
       card = hand.find {|card| card.number == match_num}
       Card.played << hand.delete(card)
     end
-    score += 1
+    @score += 1
   end
 
   def draw
     rand_card = Card.unplayed_deck.length
-    @hand << Card.unplayed_deck.delete_at(rand_car)
+    @hand << Card.unplayed_deck.delete_at(rand(rand_card))
   end
 
   def check_for_empty

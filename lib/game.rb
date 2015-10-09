@@ -35,7 +35,7 @@ class Game
     #new game kicks off game
     #commences gameplay (calls build_player_order)
 
-    player_order = build_player_order
+    @player_order = build_player_order
     deal_cards
     current_player = player_order.first
   end

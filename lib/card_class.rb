@@ -7,7 +7,7 @@ require 'pry'
 
 class Card
   
-  attr_accessor :number, :suit, :cards_array
+  attr_accessor :number, :suit
 
   @@unplayed_deck = []
   @@played = []
@@ -48,7 +48,9 @@ class Card
     unplayed_deck.push(all).flatten!
   end
 
+  self.build_deck  
 end
+
 
 
 
