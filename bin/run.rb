@@ -19,7 +19,7 @@ end
 
   def help_menu
     puts "Here are your options: "
-    puts "ask - if your opponent for a card"
+#    puts "ask - if your opponent for a card"
     puts "score - check the score"
     puts "pairs - display all played cards on the table"
     puts "help - display this menu at any time"
@@ -27,38 +27,57 @@ end
   end 
 
   def user_logic(current_player)
-    puts "#{current_player.name}, what would you like to do?"     
-    user_input = get_user_input 
-    case user_input
-      when "ask"
-        puts "What card would you like to ask for?"
-        number = gets.chomp.downcase.capitalize.strip
-        if Card.number_array.include?(number)
-          current_player.ask_and_take(number)
+    turn_over = false
+    until turn_over
+      puts "#{current_player.name}, it's your turn. Enter a number or face card to ask your opponent for a card."
+      puts "Or help to view all options. "     
+      user_input = get_user_input.chomp.downcase.capitalize.strip
+        if user_input == "Score"
+          puts "#{current_player.name}, your score is: #{current_player.score}."
+          puts "#{Game.current_game.other_player.name}, your score is: #{Game.current_game.other_player.score}."
+        elsif user_input == "Pairs"
+          print "#{Card.played.sort}."
+        elsif user_input == "Help"
+          help_menu
+        elsif user_input == "Exit"
+          puts "Thanks for playing! Have a nice day."
+          exit
+        elsif Card.number_array.include?(user_input)
+          current_player.ask_and_take(user_input)
           Game.current_game.other_player.check_for_empty
           show_hand(current_player)
+          turn_over = true
         else
-          puts "I'm sorry, that's not a valid card to ask for"
-          user_logic(current_player)
+          puts "Invalid command. Please try again. Type help to view options."
         end
-      when "score"
-        puts "#{current_player.name}, your score is: #{current_player.score}."
-        # puts "#{other_player.name}, your score is: #{current_player.score}."
-        user_logic(current_player)
-      when "pairs"
-        print "#{Card.played.sort}."
-      when "help"
-        help_menu
-        user_logic(current_player)
-      when "exit"
-        puts "Thanks for playing! Have a nice day."
-        exit
-      else 
-        puts "Invalid command"
+      end
+    end
 
-        puts user_logic(current_player)
-      end     
-  end
+    # case user_input
+    #   when "ask"
+    #     puts "What card would you like to ask for?"
+    #     number = gets.chomp.downcase.capitalize.strip
+    #     if Card.number_array.include?(number)
+    #       current_player.ask_and_take(number)
+    #       Game.current_game.other_player.check_for_empty
+    #       show_hand(current_player)
+    #       turn_over = true
+    #     else
+    #       puts "I'm sorry, that's not a valid card to ask for"
+    #     end
+    #   when "score"
+    #     puts "#{current_player.name}, your score is: #{current_player.score}."
+    #     # puts "#{other_player.name}, your score is: #{current_player.score}."
+    #   when "pairs"
+    #     print "#{Card.played.sort}."
+    #   when "help"
+    #     help_menu
+    #   when "exit"
+    #     puts "Thanks for playing! Have a nice day."
+    #     exit
+    #   else 
+    #     puts "Invalid command. Please try again. Type help to view options."
+    #   end     
 
   def create_users
     puts "Player 1: What is your name?"
