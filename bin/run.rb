@@ -26,29 +26,37 @@ end
     puts "exit - exit the game"
   end 
 
-  def user_logic(current_player, user_input)
-    case user_input 
+  def user_logic(current_player)
+    puts "#{current_player.name}, what would you like to do?"     
+    user_input = get_user_input 
+    case user_input
       when "ask"
         puts "What card would you like to ask for?"
         number = gets.chomp.downcase.capitalize.strip
-        current_player.ask_and_take(number)
-        Game.current_game.other_player.check_for_empty
-        show_hand(current_player)
-
+        if Card.number_array.include?(number)
+          current_player.ask_and_take(number)
+          Game.current_game.other_player.check_for_empty
+          show_hand(current_player)
+        else
+          puts "I'm sorry, that's not a valid card to ask for"
+          user_logic(current_player)
+        end
       when "score"
         puts "#{current_player.name}, your score is: #{current_player.score}."
         # puts "#{other_player.name}, your score is: #{current_player.score}."
+        user_logic(current_player)
       when "pairs"
         print "#{Card.played.sort}."
       when "help"
         help_menu
-        user_logic(current_player, user_input)
+        user_logic(current_player)
       when "exit"
         puts "Thanks for playing! Have a nice day."
         exit
       else 
-        "Invalid command"
-        user_logic(current_player, user_input)
+        puts "Invalid command"
+
+        puts user_logic(current_player)
       end     
   end
 
@@ -75,6 +83,7 @@ end
     player.hand.each do |card|
       print "#{card.number} of #{card.suit}s. "
     end
+    print "\n \n"
   end
 
   def get_user_input
@@ -86,9 +95,8 @@ end
   def turn(current_player)
     puts "<>< ><> <>< ><>"
     show_hand(current_player)
-    "#{current_player.name}, what would you like to do?"     
-    help_menu
-    user_logic(current_player, get_user_input)
+    # help_menu
+    user_logic(current_player)
     current_player.find_matching
     current_player.check_for_empty
     puts "#{current_player.name}: #{current_player.score}."
@@ -107,11 +115,5 @@ until game.game_over?
   turn(game.current_player)
   game.switch_player
 end
-# binding.pry
 
-
-
-
-
-Pry.start
 

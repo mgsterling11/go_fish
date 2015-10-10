@@ -11,6 +11,12 @@ class Card
 
   @@unplayed_deck = []
   @@played = []
+  @@suit_array = ["Heart", "Diamond", "Spade", "Club"]
+  @@number_array = ['2','3','4','5','6','7','8','9','10', "Jack", "Queen", "King", "Ace"]
+
+  def self.number_array
+    @@number_array
+  end
 
   def self.unplayed_deck
     @@unplayed_deck
@@ -39,9 +45,9 @@ class Card
   
   def self.build_deck
     @@all = []
-    number_array = ['2','3','4','5','6','7','8','9','10', "Jack", "Queen", "King", "Ace"]
-    ["Heart", "Diamond", "Spade", "Club"].each do |suit|
-      number_array.each do |number|
+    # number_array = ['2','3','4','5','6','7','8','9','10', "Jack", "Queen", "King", "Ace"]
+    @@suit_array.each do |suit|
+      @@number_array.each do |number|
         all << Card.new(suit, number)
       end
     end

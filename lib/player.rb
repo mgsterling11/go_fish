@@ -41,7 +41,6 @@ class Player
   # Outputs a number on matching card
   def find_matching
     numbers_array = numbers_in_hand
-    #match_num = "none"
     match_num = numbers_array.find do |card|
       numbers_array.count(card) > 1
     end

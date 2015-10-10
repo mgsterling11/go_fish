@@ -49,7 +49,7 @@ class Game
   end
 
   def check_score
-    current_player.score >=1
+    current_player.score >= 3
   end
 
   def check_deck
