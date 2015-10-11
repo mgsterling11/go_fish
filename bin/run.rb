@@ -36,9 +36,7 @@ def user_logic(current_player)
     elsif user_input == "Pairs"
       binding.pry
       puts "The following cards have been played:"
-      Card.played.each do |card|
-        print "#{card.number} of #{card.suit}s "
-      end
+      print string_of_cards(Card.played_sorted)
       print "\n"
     elsif user_input == "Help"
       help_menu
@@ -76,10 +74,17 @@ end
 
 def show_hand(player)
   puts "#{player.name}, this is your hand:"
-  player.hand.each do |card|
-    print "#{card.number} of #{card.suit}s. "
-  end
+  # player.hand.each do |card|
+  #   print "#{card.number} of #{card.suit}s. "
+  # end
+  print string_of_cards(player.hand)
   print "\n \n"
+end
+
+def string_of_cards(array_of_cards)
+  array_of_cards.collect do |card|
+    "#{card.number} of #{card.suit}s"
+  end.join(" - ")
 end
 
 def get_user_input

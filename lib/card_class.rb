@@ -27,6 +27,10 @@ class Card
   end
 
   def self.played
+    @@played
+  end
+
+  def self.played_sorted
     @@played.sort_by do |card|
       @@number_array.index(card.number)
     end
