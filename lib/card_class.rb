@@ -27,7 +27,10 @@ class Card
   end
 
   def self.played
-    @@played
+    @@played.sort_by do |card|
+      @@number_array.index(card.number)
+    end
+    # Returns played cards sorted by number array
   end
 
   def initialize(suit, number)
