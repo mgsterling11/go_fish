@@ -1,10 +1,10 @@
 AT - implement filter for entering in a number
 TL - reformat menu system so you don't have to type ask every time
 __ - refactor run ruby file into controller
-__ - validation for other commands on your turn
+AT - validation for other commands on your turn
 __ - improve aesthetics
 DONE - create loop for players turn so that they can ask for help and get list of played cards without ending their turn.
 DONE - make it so an invalid input doesnt skip your turn
 DONE - make sure you can take onther players face cards
-__ - be bale to play two sets of pairs at the begining of the game
+AT - be bale to play two sets of pairs at the begining of the game
 AT - get pairs function to work
