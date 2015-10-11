@@ -15,7 +15,6 @@ def user_logic(current_player)
       CLIController.display_score
     elsif user_input == "Pairs"
       PlayerController.play_pairs
-      #found a bug where the current_player's pairs are not played; instead it's the other_player's pairs that are played and their score is increased. Added to list to fix.
     elsif user_input == "Help"
       CLIController.help_menu
     elsif user_input == "Exit"
@@ -61,23 +60,3 @@ until game.game_over?
   turn(game.current_player)
   game.switch_player
 end
-
-
-
-
-# def reload!
-#   load 'lib/card_class.rb'
-#   load 'lib/player.rb'
-#   # load 'l/computer.rb'
-#   load 'lib/game.rb'
-#   load 'seed.rb'
-# end
-  
-
-# def show_hand(player)
-# moved to PlayerController
-# end
-
-# def string_of_cards(array_of_cards)
-#  moved to PlayerController
-# end

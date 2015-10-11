@@ -1,13 +1,5 @@
-#variables needed
-#Need list of *all* players of game (to iterate over)
-#Need access to Card.unplayed_deck
-
-#need to double check accessors and class variable notation 
-
 #suggestions
 #build the game_over? method into the CLI to determine if game is over. 
-#game play stops when the game is over.
-#can make this a loop and check if the game is over after every turn. 
 #should a game be able to reset itself? If so, what is it resetting? 
 
 class Game
@@ -33,9 +25,9 @@ class Game
   end
 
   def initialize
-    #should this be in the initialization of Game? So, CLI would call Game.new
-    #new game kicks off game
-    #commences gameplay (calls build_player_order)
+    # should this be in the initialization of Game? So, CLI would call Game.new
+    # new game kicks off game
+    # commences gameplay (calls build_player_order)
 
     @player_order = build_player_order
     deal_cards
@@ -66,18 +58,6 @@ class Game
       over = true
     end
   end
-
-  # def next_player
-  #   #iterate through the array of players. 
-  #   # if we reach the end, reset at 0 and start
-  #   turn = player_order.index(current_player)
-  #   if turn + 1 >= player_order.length
-  #     turn = 0
-  #   else
-  #     turn += 1
-  #   end
-  #   current_player = player_order[turn]
-  # end 
 
   def switch_player
     if @current_player == player_order[0]

@@ -41,14 +41,6 @@ class Card
     @number = number
     @suit = suit
   end
-
-  # def self.build_deck
-  #   create_cards
-  #   populate_numbers
-  #   populate_symbols
-  #   @@unplayed_deck << self
-  #   DECK << self
-  # end  
   
   def self.build_deck
     @@all = []
