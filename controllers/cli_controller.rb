@@ -3,6 +3,7 @@ class CLIController
 
   def self.greeting
     puts "Welcome to Go Fish!"
+    puts "Let's create some players."
   end
 
   def self.help_menu

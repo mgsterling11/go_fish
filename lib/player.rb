@@ -21,13 +21,16 @@ class Player
 
   def ask_and_take(number, player = Game.current_game.other_player)
     take_card=nil
+    puts "Hey, #{player.name}, do you have any #{number}s?"
     take_card = player.hand.find do |card|
       card.number == number
     end
     if take_card.class == Card
+      puts "#{player.name}: Yes. (Sigh). Here you go."
       hand << player.hand.delete(take_card) 
     else
-      puts "Go fish"
+      puts "#{player.name}: Sorry, no #{number}s!" 
+      puts "GO FISH!"
       draw
     end
   end

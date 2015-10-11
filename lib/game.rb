@@ -54,6 +54,7 @@ class Game
       over = true
     elsif check_score
       @winner = other_player
+      puts "WE HAVE A WINNER! GAME OVER."
       puts "#{@winner.name} wins with a score of #{@winner.score}"
       over = true
     end
