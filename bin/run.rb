@@ -34,7 +34,7 @@ def user_logic(current_player)
       puts "#{Game.current_game.other_player.name}, your score is: #{Game.current_game.other_player.score}."
     elsif user_input == "Pairs"
       puts "The following cards have been played:"
-      print string_of_cards(Card.played_sorted)
+      print PlayerController.string_of_cards(Card.played_sorted)
       print "\n"
     elsif user_input == "Help"
       help_menu
@@ -44,7 +44,7 @@ def user_logic(current_player)
     elsif Card.number_array.include?(user_input)
       current_player.ask_and_take(user_input)
       Game.current_game.other_player.check_for_empty
-      show_hand(current_player)
+      PlayerController.show_hand(current_player)
       turn_over = true
     else
       puts "Invalid command. Please try again. Type help to view options."
@@ -56,17 +56,17 @@ def create_game
   Game.new
 end
 
-def show_hand(player)
-  puts "#{player.name}, this is your hand:"
-  print string_of_cards(player.hand)
-  print "\n \n"
-end
+# def show_hand(player)
+#   puts "#{player.name}, this is your hand:"
+#   print string_of_cards(player.hand)
+#   print "\n \n"
+# end
 
-def string_of_cards(array_of_cards)
-  array_of_cards.collect do |card|
-    "#{card.number} of #{card.suit}s"
-  end.join(" - ")
-end
+# def string_of_cards(array_of_cards)
+#   array_of_cards.collect do |card|
+#     "#{card.number} of #{card.suit}s"
+#   end.join(" - ")
+# end
 
 def get_user_input
   user_input = gets.chomp.downcase.strip
@@ -76,16 +76,13 @@ end
 
 def turn(current_player)
   puts "<>< ><> <>< ><>"
-  show_hand(current_player)
-  # help_menu
+  PlayerController.show_hand(current_player)
   user_logic(current_player)
   2.times {current_player.find_matching}
   current_player.check_for_empty
   puts "#{current_player.name}: #{current_player.score}."
   puts "#{Game.current_game.other_player.name}: #{Game.current_game.other_player.score}."
-
   puts "<>< ><> <>< ><>"
-  # system 'clear'
 end
 
 greeting

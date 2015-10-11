@@ -14,6 +14,17 @@ def self.create_users
   Player.new(player_2_name, player_2_age)
 end
 
+def self.show_hand(player)
+  puts "#{player.name}, this is your hand:"
+  print self.string_of_cards(player.hand)
+  print "\n \n"
+end
+
+def self.string_of_cards(array_of_cards)
+  array_of_cards.collect do |card|
+    "#{card.number} of #{card.suit}s"
+  end.join(" - ")
+end
 
 
 end
