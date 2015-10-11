@@ -74,35 +74,3 @@ class Game
     
   # end
 end
-
-
-#require 'pry'
-
-
-#tests 
-# class Player
-#   attr_accessor :name, :age, :score
-
-#   def initialize(name, age)
-#     @name = name
-#     @age = age
-#     @score = nil
-#     self.class.all << self
-#   end
-
-#   def self.all
-#     @@all ||= []
-#   end
-
-# end
-
-# Pry.start
-
-# class Card
-#   attr_reader :num, :suit
-
-#   def initialize
-#   end
-
-# end
-
