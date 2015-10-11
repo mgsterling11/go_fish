@@ -1,7 +1,4 @@
 
-#4 cards.each do
-#assign symbol 1-4
-
 require 'pry'
 
 
