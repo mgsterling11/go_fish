@@ -3,5 +3,6 @@ require_relative '../lib/player.rb'
 #require_relative '../lib/computer.rb'
 require_relative '../lib/game.rb'
 require_relative '../controllers/player_controller.rb'
+require_relative '../controllers/cli_controller.rb'
 
 

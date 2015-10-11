@@ -26,5 +26,9 @@ def self.string_of_cards(array_of_cards)
   end.join(" - ")
 end
 
-
+def self.play_pairs
+  puts "The following cards have been played:"
+  print string_of_cards(Card.played_sorted)
+  print "\n"
+end
 end
