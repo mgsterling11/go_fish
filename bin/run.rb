@@ -26,7 +26,8 @@ def user_logic(current_player)
       PlayerController.show_hand(current_player)
       turn_over = true
     else
-      puts "Invalid command. Please try again. Type help to view options."
+      invalide_command = GameInvalidCommand.new
+      invalide_command.render
     end
   end
 end
