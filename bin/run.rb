@@ -9,7 +9,7 @@ def user_logic(current_player)
   until turn_over
     CLIController.current_player_turn
       
-    user_input = get_user_input.chomp.downcase.capitalize.strip
+    user_input = get_user_input
 
     if user_input == "Score"
       CLIController.display_score
@@ -37,7 +37,7 @@ def create_game
 end
 
 def get_user_input
-  user_input = gets.chomp.downcase.strip
+  user_input = gets.chomp.downcase.capitalize.strip
 end
 
 def turn(current_player)
