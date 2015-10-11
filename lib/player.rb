@@ -66,7 +66,4 @@ class Player
     5.times {draw} if hand.empty?
   end
 
-  # ACCESS NEEDED
-  # attr_accessor :Card.unplayed_deck, :Card.unplayed
-
 end

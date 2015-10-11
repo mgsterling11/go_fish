@@ -49,7 +49,7 @@ class Game
   end
 
   def check_score
-    current_player.score >= 3
+    other_player.score >= 3
   end
 
   def check_deck
@@ -61,7 +61,7 @@ class Game
     if check_deck
       over = true
     elsif check_score
-      @winner = current_player
+      @winner = other_player
       puts "#{@winner.name} wins with a score of #{@winner.score}"
       over = true
     end

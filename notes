@@ -7,4 +7,4 @@ DONE - create loop for players turn so that they can ask for help and get list o
 DONE - make it so an invalid input doesnt skip your turn
 DONE - make sure you can take onther players face cards
 __ - be bale to play two sets of pairs at the begining of the game
-__ - get pairs function to work
+AT - get pairs function to work
