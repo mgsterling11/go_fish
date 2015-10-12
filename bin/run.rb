@@ -11,7 +11,6 @@ def user_logic(current_player, other_player)
     if user_input == "Score"
       ViewScore.new.render
     elsif user_input == "Pairs"
-      CLIMessages.play_pairs
       CardController.show_played
     elsif user_input == "Help"
       CLIHelpMenu.new.render
@@ -19,7 +18,9 @@ def user_logic(current_player, other_player)
       puts "Thanks for playing! Have a nice day."
       exit
     elsif Card.number_array.include?(user_input)
-      current_player.ask_and_take(user_input, other_player)
+      take_card = PlayerController.new.ask_for_card(other_player, user_input)
+      # current_player.ask_and_take(user_input, other_player)
+      PlayerController.new.take_card(take_card, current_player, other_player, user_input) if take_card
       other_player.check_for_empty
       PlayerController.show_hand(current_player)
       turn_over = true
@@ -45,6 +46,8 @@ def turn(current_player, other_player)
   PlayerController.play_matching(current_player)
   current_player.check_for_empty
   ViewScore.new.render
+  GameController.new.long_pause
+  GameController.new.clear
   InsertFish.new.render
 end
 

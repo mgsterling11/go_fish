@@ -23,25 +23,25 @@ class Player
 
   # Removes a card from the deck and adds it to hand
 
-  def ask_and_take(number, player)
-    take_card=nil
-    puts 
-    puts "Hey, #{player.name}, do you have any #{number}s?"
-    take_card = player.hand.find do |card|
-      card.number == number
-    end
-    if take_card.class == Card
-      puts "#{player.name}: Yes. (Sigh). Here you go."
-      puts
-      hand << player.hand.delete(take_card) 
-    else
-      puts
-      puts "#{player.name}: Sorry, no #{number}s!" 
-      puts "GO FISH!"
-      puts
-      draw
-    end
-  end
+  # def ask_and_take(number, player)
+  #   # take_card=nil
+  #   # puts 
+  #   # puts "Hey, #{player.name}, do you have any #{number}s?"
+  #   # take_card = player.hand.find do |card|
+  #   #   card.number == number
+  #   # end
+  #   if take_card.class == Card
+  #     puts "#{player.name}: Yes. (Sigh). Here you go."
+  #     puts
+  #     hand << player.hand.delete(take_card) 
+  #   else
+  #     puts
+  #     puts "#{player.name}: Sorry, no #{number}s!" 
+  #     puts "GO FISH!"
+  #     puts
+  #     draw
+  #   end
+  # end
 
   # Outputs an array of all the numbes in your hand. 
   def numbers_in_hand
