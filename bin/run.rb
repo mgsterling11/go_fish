@@ -44,7 +44,8 @@ def turn(current_player)
   puts "<>< ><> <>< ><>"
   PlayerController.show_hand(current_player)
   user_logic(current_player)
-  2.times {current_player.find_matching}
+  # 2.times {current_player.find_matching}
+  PlayerController.play_mathching(current_player)
   current_player.check_for_empty
   puts "#{current_player.name}: #{current_player.score}."
   puts "#{Game.current_game.other_player.name}: #{Game.current_game.other_player.score}."

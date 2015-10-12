@@ -15,9 +15,6 @@ class PlayerController
   end
 
   def self.show_hand(player)
-    # puts "#{player.name}, this is your hand:"
-    # print self.string_of_cards(player.hand)
-    # print "\n \n"
     player_hand = PlayerShowHand.new
     player_hand.render(player)
   end
@@ -27,5 +24,10 @@ class PlayerController
       "#{card.number} of #{card.suit}s"
     end.join(" - ")
   end
+
+  def self.play_matching(player)
+    2.times {player.find_matching}
+  end
+
 
 end
