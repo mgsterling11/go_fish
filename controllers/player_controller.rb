@@ -19,11 +19,11 @@ class PlayerController
     player_hand.render(player)
   end
 
-  def self.string_of_cards(array_of_cards)
-    array_of_cards.collect do |card|
-      "#{card.number} of #{card.suit}s"
-    end.join(" - ")
-  end
+  # def self.string_of_cards(array_of_cards)
+  #   array_of_cards.collect do |card|
+  #     "#{card.number} of #{card.suit}s"
+  #   end.join(" - ")
+  # end
 
   def self.play_matching(player)
     2.times {player.find_matching}

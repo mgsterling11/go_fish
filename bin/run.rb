@@ -14,7 +14,7 @@ def user_logic(current_player)
     if user_input == "Score"
       CLIController.display_score
     elsif user_input == "Pairs"
-      PlayerController.play_pairs
+      CardController.show_played
     elsif user_input == "Help"
       CLIController.help_menu
     elsif user_input == "Exit"
@@ -45,7 +45,7 @@ def turn(current_player)
   PlayerController.show_hand(current_player)
   user_logic(current_player)
   # 2.times {current_player.find_matching}
-  PlayerController.play_mathching(current_player)
+  PlayerController.play_matching(current_player)
   current_player.check_for_empty
   puts "#{current_player.name}: #{current_player.score}."
   puts "#{Game.current_game.other_player.name}: #{Game.current_game.other_player.score}."
