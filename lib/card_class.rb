@@ -1,7 +1,3 @@
-
-require 'pry'
-
-
 class Card
   
   attr_accessor :number, :suit
@@ -11,6 +7,11 @@ class Card
   @@suit_array = ["Heart", "Diamond", "Spade", "Club"]
   @@number_array = ['2','3','4','5','6','7','8','9','10', "Jack", "Queen", "King", "Ace"]
 
+  def initialize(suit, number)
+    @number = number
+    @suit = suit
+  end
+  
   def self.number_array
     @@number_array
   end
@@ -32,11 +33,6 @@ class Card
       @@number_array.index(card.number)
     end
     # Returns played cards sorted by number array
-  end
-
-  def initialize(suit, number)
-    @number = number
-    @suit = suit
   end
   
   def self.build_deck

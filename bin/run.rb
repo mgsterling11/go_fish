@@ -3,8 +3,7 @@ require_relative '../config/environment.rb'
 
 require 'pry'
 
-
-def user_logic(current_player)
+def user_logic(current_player, other_player)
   turn_over = false
   until turn_over
     CurrentPlayerMessage.new.render
@@ -20,8 +19,8 @@ def user_logic(current_player)
       puts "Thanks for playing! Have a nice day."
       exit
     elsif Card.number_array.include?(user_input)
-      current_player.ask_and_take(user_input)
-      Game.current_game.other_player.check_for_empty
+      current_player.ask_and_take(user_input, other_player)
+      other_player.check_for_empty
       PlayerController.show_hand(current_player)
       turn_over = true
     else
@@ -38,10 +37,10 @@ def get_user_input
   user_input = gets.chomp.downcase.capitalize.strip
 end
 
-def turn(current_player)
+def turn(current_player, other_player)
   InsertFish.new.render
   PlayerController.show_hand(current_player)
-  user_logic(current_player)
+  user_logic(current_player, other_player)
   # 2.times {current_player.find_matching}
   PlayerController.play_matching(current_player)
   current_player.check_for_empty
@@ -49,13 +48,16 @@ def turn(current_player)
   InsertFish.new.render
 end
 
+
+#Actions 
 CLIGreeting.new.render
 PlayerController.create_users
 CLIHelpMenu.new.render
 game = create_game
+game.start_game
 
 ## THIS IS THE MAIN LOOP OF THE GAME!! ##
 until game.game_over?
-  turn(game.current_player)
+  turn(game.current_player, game.other_player)
   game.switch_player
 end

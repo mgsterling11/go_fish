@@ -6,6 +6,8 @@ class CLIHelpMenu
     puts "pairs - display all played cards on the table"
     puts "help - display this menu at any time"
     puts "exit - exit the game"
+    puts 
+    puts
   end 
   
 end
