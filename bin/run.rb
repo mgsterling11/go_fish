@@ -20,7 +20,7 @@ def user_logic(current_player, other_player)
     elsif Card.number_array.include?(user_input)
       take_card = PlayerController.new.ask_for_card(other_player, user_input)
       # current_player.ask_and_take(user_input, other_player)
-      PlayerController.new.take_card(take_card, current_player, other_player, user_input) if take_card
+      PlayerController.new.take_card(take_card, current_player, other_player, user_input)
       other_player.check_for_empty
       PlayerController.show_hand(current_player)
       turn_over = true
