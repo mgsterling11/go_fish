@@ -1,7 +1,7 @@
 #suggestions
 #build the game_over? method into the CLI to determine if game is over. 
 #should a game be able to reset itself? If so, what is it resetting? 
-
+require 'pry'
 class Game
   attr_accessor :current_player, :over, :winner, :player_order, :other_player
   
@@ -54,8 +54,7 @@ class Game
       over = true
     elsif check_score
       @winner = other_player
-      puts "WE HAVE A WINNER! GAME OVER."
-      puts "#{@winner.name} wins with a score of #{@winner.score}"
+      GameWinnerAnnounce.new.render  
       over = true
     end
   end

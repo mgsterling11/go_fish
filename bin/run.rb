@@ -7,16 +7,16 @@ require 'pry'
 def user_logic(current_player)
   turn_over = false
   until turn_over
-    CLIController.current_player_turn
+    CurrentPlayerMessage.new.render
       
     user_input = get_user_input.chomp.downcase.capitalize.strip
 
     if user_input == "Score"
-      CLIController.display_score
+      ViewScore.new.render
     elsif user_input == "Pairs"
-      PlayerController.play_pairs
+      CLIMessages.play_pairs
     elsif user_input == "Help"
-      CLIController.help_menu
+      CLIHelpMenu.new.render
     elsif user_input == "Exit"
       puts "Thanks for playing! Have a nice day."
       exit
@@ -26,8 +26,7 @@ def user_logic(current_player)
       PlayerController.show_hand(current_player)
       turn_over = true
     else
-      invalide_command = GameInvalidCommand.new
-      invalide_command.render
+      GameInvalidCommand.new.render
     end
   end
 end
@@ -41,19 +40,18 @@ def get_user_input
 end
 
 def turn(current_player)
-  puts "<>< ><> <>< ><>"
+  InsertFish.new.render
   PlayerController.show_hand(current_player)
   user_logic(current_player)
   2.times {current_player.find_matching}
   current_player.check_for_empty
-  puts "#{current_player.name}: #{current_player.score}."
-  puts "#{Game.current_game.other_player.name}: #{Game.current_game.other_player.score}."
-  puts "<>< ><> <>< ><>"
+  ViewScore.new.render
+  InsertFish.new.render
 end
 
-CLIController.greeting
+CLIGreeting.new.render
 PlayerController.create_users
-CLIController.help_menu
+CLIHelpMenu.new.render
 game = create_game
 
 ## THIS IS THE MAIN LOOP OF THE GAME!! ##
