@@ -8,13 +8,12 @@ def user_logic(current_player)
   turn_over = false
   until turn_over
     CurrentPlayerMessage.new.render
-      
-    user_input = get_user_input.chomp.downcase.capitalize.strip
-
+    user_input = get_user_input
     if user_input == "Score"
       ViewScore.new.render
     elsif user_input == "Pairs"
       CLIMessages.play_pairs
+      CardController.show_played
     elsif user_input == "Help"
       CLIHelpMenu.new.render
     elsif user_input == "Exit"
@@ -36,14 +35,15 @@ def create_game
 end
 
 def get_user_input
-  user_input = gets.chomp.downcase.strip
+  user_input = gets.chomp.downcase.capitalize.strip
 end
 
 def turn(current_player)
   InsertFish.new.render
   PlayerController.show_hand(current_player)
   user_logic(current_player)
-  2.times {current_player.find_matching}
+  # 2.times {current_player.find_matching}
+  PlayerController.play_matching(current_player)
   current_player.check_for_empty
   ViewScore.new.render
   InsertFish.new.render
